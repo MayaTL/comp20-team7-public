@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<title>Artist Page</title>
+
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+	<meta charset="utf-8">
+	<script src="project.js"></script>
+
+	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIpJsr01N5D_EvK04m1sTJAqzAfKB1vtY&callback=initMap" async defer></script>
+	<!-- Modal works without this but "appears" in a different manner-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	
+	<script>window.jQuery || document.write('<script src="js/jquery-1.10.1.min.js"><\/script>')</script>
+	
+
+
+	<link href="project.css" rel="stylesheet" />
+	<script type="modal.js"></script>
+
+	<style type = "text/css">
+
+* {
+box-sizing: border-box;
+}
+
+	.column {
+float:left;
+width: 50%;
+padding: 10px;
+height: 600px;
+}
+
+	.left {
+width: 85%;
+
+}
+.right {
+width: 15%;
+}
+
+	.row:after{
+content: "";
+display: table;
+clear: both;
+}
+</style>
+
+
+</head>
+
+
+<body>
+<h1> MOC </h1>
+
+	<div class="row">
+<div class="column left map" style="background-color:#aaa;">
+
+		<h2>Popular Artists by Location </h2>
+<div id="map_canvas"></div>
+</div>
+
+		<div class="column right list" style="background-color:#E6E6FA;">
+			<!-- Would be a good idea to make this dynamic -->
+			<h2>List of Artists</h2>
+				<p class="btn-fix"><button class="btn btn-success btn-sm video" id="Sheck Wes" data-video="https://www.youtube.com/embed/VWoIpDVkOH0" data-toggle="modal" data-target="#videoModal" data-name="Sheck Wes" data-about="artist bio here" onclick = "addBtn()" >Sheck Wes Test</button></p>
+				<!--<button class="btn btn-success btn-sm video" id="Sheck Wes" data-video="https://www.youtube.com/embed/VWoIpDVkOH0" data-toggle="modal" data-target="#videoModal" data-name="Sheck Wes" data-about="artist bio here">Sheck Wes</button>-->
+				
+				<p class="btn-fix"><button class="btn btn-success btn-sm video" id="Dave East" data-video="https://www.youtube.com/embed/RhXt_y0lMC4" data-toggle="modal" data-target="#videoModal" data-name="Dave East">Dave East</button>
+				</p>
+        <p class="btn-fix">
+				<button class="btn btn-success btn-sm video" id="Deem Spencer" data-video="https://www.youtube.com/embed/DczN8W_Agu8" data-toggle="modal" data-target="#videoModal" data-name="Deem Spencer">Deem Spencer</button>
+				</p>
+        <p class="btn-fix">
+				<button class="btn btn-success btn-sm video" id="Leeky Bandz" data-video="https://www.youtube.com/embed/ZbC58CBdM88" data-toggle="modal" data-target="#videoModal" data-name="Leeky Bandz">Leeky Bandz</button>
+				</p>
+        <p class="btn-fix">
+				<button class="btn btn-success btn-sm video" id="Norah Jones" data-video="https://www.youtube.com/embed/lbjZPFBD6JU" data-toggle="modal" data-target="#videoModal" data-name="Norah Jones">Norah Jones</button>
+				</p>
+        <p class="btn-fix">
+				<button class="btn btn-success btn-sm video" id="A Boogie" data-video="https://www.youtube.com/embed/fUtlqtdn1Xo" data-toggle="modal" data-target="#videoModal" data-name="A Boogie">A Boogie</button>
+				</p>
+        <p class="btn-fix">
+				<button class="btn btn-success btn-sm video" id="SABA" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="SABA">SABA</button>
+				</p>
+        <!--
+				<button class="btn btn-success btn-sm video" id="Amilia Watty" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Amilia Watty">Amilia Watty</button>
+
+				</br>
+				<button class="btn btn-success btn-sm video" id="Taylor Simone" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Taylor Simone">Taylor Simone</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="GROMO" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="GROMO">GROMO</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="Dominic Lord" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Dominic Lord">Dominic Lord</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="Xenia Rubinos" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Xenia Rubinos">Xenia Rubinos</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="Jesus Honcho" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Jesus Honcho">Jesus Honcho</button> 	
+				</br>
+				<button class="btn btn-success btn-sm video" id="Princess Nokia" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Princess Nokia">Princess Nokia</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="Rockstar Payso" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Rockstar Payso">Rockstar Payso</button> 
+				</br>
+				<button class="btn btn-success btn-sm video" id="Malibu Miitch" data-video="https://www.youtube.com/embed/_6ZsSWlcEDo" data-toggle="modal" data-target="#videoModal" data-name="Malibu Miitch">Malibu Miitch</button> -->
+				
+
+			</div>
+</div>
+
+
+
+<div id="Artist Location">Artist Location Here</div>
+
+<!--<table style="width:100%">
+  <tr>
+    <th>Popular Artist Here</th>
+    <th>Lists of Artists</th>
+  </tr>
+  <tr>
+    <td>Map Goes Here</td>
+    <td>Sam Smoth</td>   </tr>
+</table>-->
+
+<!-- Modal 1 Content porfolio based code 
+    <div class="portfolio-modal modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+              	<h2 class="modal-title">Sheck Wes</h2>
+                <div class="modal-body"> 
+       			content goes here 
+                  
+                  <p class="item-intro text-muted">Musician</p>
+                 <img class="img-fluid d-block mx-auto" src="mockup2.png" alt="">
+                  <iframe width="400" height="300" frameborder="0" allowfullscreen=""></iframe>
+                   <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fas fa-times"></i>
+                    Close Modal</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<!-- Modal from W3schools
+<div class="container">
+  <h2>Modal Events - hidden.bs.modal</h2>
+  -Trigger the modal with a button 
+  <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button>
+
+  - Modal
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      - Modal content
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>The <strong>hidden.bs.modal</strong> event occurs when the modal is no longer visible for the user.</p>
+          <p>Try to close this modal to trigger the hidden.bs.modal event.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+</div> -->
+	<!-- Modal -->
+	<!-- Modal 
+	<div class="portfolio-modal modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Sheck Wes</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>YouTube video goes here</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div> -->
+  <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+        	<h2 class="modal-title"></h2>
+        	<p class="modal-about"></p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+  	$(function() {
+      $(".video").click(function () {
+        var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-video"),
+        videoSRCauto = videoSRC;
+        $(theModal + ' iframe').attr('src', videoSRCauto);
+
+        $(theModal + ' button.close').click(function () {
+            $(theModal + ' iframe').attr('src', '');
+        });
+        //var name = $(this).attr("data-name"),
+        //theModal.find('.modal-title').text(name)
+        //var button = $(event.relatedTarget), // Button that triggered the modal
+        //var name = button.data("name"),
+       // $(this).find('.modal-title').text('YouTube video from ' + name), //fill in title with artist name
+      });
+  	});
+  	$('#videoModal').on('hidden.bs.modal', function (e) {
+  	 $('#videoModal').find('iframe').attr('src', '');
+  	});
+  	
+    $(document).ready(function () {
+ 		$('#videoModal').on('show.bs.modal', function (event) { // id of the modal with event
+   		var button = $(event.relatedTarget) // Button that triggered the modal
+   		var name = button.data('name') // Extract info from data-* attributes
+   		//var location = button.data('location')
+   
+   		var title = 'Music Video from ' + name
+   		var bio = button.data('about')
+   		var about = 'About: ' + bio
+   		// Update the modal's content.
+   		var modal = $(this)
+   		modal.find('.modal-title').text(title)
+   		modal.find('.modal-about').text(about)
+   		});
+   	});
+
+  </script>
+
+	</body>
+
+	</html>
